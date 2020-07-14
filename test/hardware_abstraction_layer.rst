@@ -2,8 +2,6 @@
 硬件抽象层
 =============================
 
-<!--
-
 -  @Author: cpu_code
 
 -  @Date: 2020-07-12 22:20:34
@@ -19,28 +17,8 @@
 -  @CSDN: https://blog.csdn.net/qq_44226094
 
 -  | @Gitbook: https://923992029.gitbook.io/cpucode/
-   | -->
 
-.. _header-n21:
 
-硬件抽象层
-==========
-
--  @Author: cpu_code
-
--  @Date: 2020-07-12 22:20:34
-
--  @LastEditTime: 2020-07-13 22:52:02
-
--  @FilePath: \\notes\android\ *bottom\hardware*\ abstraction_layer.md
-
--  @Gitee: https://gitee.com/cpu_code
-
--  @Github: https://github.com/CPU-Code
-
--  @CSDN: https://blog.csdn.net/qq_44226094
-
--  @Gitbook: https://923992029.gitbook.io/cpucode/
 
 Android系统的\ **硬件抽象层**\ （Hardware Abstract Layer， HAL）
 运行在用户空间中， 它向下屏蔽硬件驱动模块的实现细节，
