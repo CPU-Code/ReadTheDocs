@@ -11,7 +11,7 @@ Welcome to ReadTheDocs's documentation!
    :caption: Contents:
 
 
-   test/test.rst
+   test.rst
 
 Indices and tables
 ==================

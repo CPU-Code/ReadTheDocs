@@ -1,7 +1,7 @@
 '''
 @Author: cpu_code
 @Date: 2020-07-14 16:02:59
-@LastEditTime: 2020-07-14 17:36:48
+@LastEditTime: 2020-07-14 17:59:30
 @FilePath: \ReadTheDocs\conf.py
 @Gitee: https://gitee.com/cpu_code
 @Github: https://github.com/CPU-Code
@@ -37,6 +37,10 @@ author = 'cpucode'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
+
+import sphinx_rtd_theme
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 
 # -- General configuration ---------------------------------------------------
