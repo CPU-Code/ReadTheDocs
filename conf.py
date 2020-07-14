@@ -1,3 +1,13 @@
+'''
+@Author: cpu_code
+@Date: 2020-07-14 16:02:59
+@LastEditTime: 2020-07-14 17:06:10
+@FilePath: \ReadTheDocs\conf.py
+@Gitee: https://gitee.com/cpu_code
+@Github: https://github.com/CPU-Code
+@CSDN: https://blog.csdn.net/qq_44226094
+@Gitbook: https://923992029.gitbook.io/cpucode/
+'''
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -35,9 +45,7 @@ release = '0.0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-        'recommonmark',
         'sphinx_markdown_tables',
-        'sphinxemoji.sphinxemoji',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,12 +75,3 @@ html_static_path = ['_static']
 # source_suffix = '.rst'
 
 source_suffix = ['.rst', '.md']
-
- 
-# At the bottom of conf.py
-def setup(app):
-    app.add_config_value('recommonmark_config', {
-            'url_resolver': lambda url: github_doc_root + url,
-            'auto_toc_tree_section': 'Contents',
-            }, True)
-    app.add_transform(AutoStructify)
