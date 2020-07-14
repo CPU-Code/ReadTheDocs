@@ -1,7 +1,7 @@
 '''
 @Author: cpu_code
 @Date: 2020-07-14 16:02:59
-@LastEditTime: 2020-07-14 17:59:30
+@LastEditTime: 2020-07-14 18:06:42
 @FilePath: \ReadTheDocs\conf.py
 @Gitee: https://gitee.com/cpu_code
 @Github: https://github.com/CPU-Code
@@ -75,4 +75,8 @@ html_static_path = ['_static']
 
 # source_suffix = '.rst'
 
+from recommonmark.parser import CommonMarkParser
+source_parsers = {
+    '.md': CommonMarkParser,
+}
 source_suffix = ['.rst', '.md']
