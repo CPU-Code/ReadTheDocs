@@ -1,7 +1,7 @@
 '''
 @Author: cpu_code
 @Date: 2020-07-14 16:02:59
-@LastEditTime: 2020-07-14 18:06:42
+@LastEditTime: 2020-07-14 18:09:53
 @FilePath: \ReadTheDocs\conf.py
 @Gitee: https://gitee.com/cpu_code
 @Github: https://github.com/CPU-Code
@@ -80,3 +80,15 @@ source_parsers = {
     '.md': CommonMarkParser,
 }
 source_suffix = ['.rst', '.md']
+
+# At top on conf.py (with other import statements)
+import recommonmark
+from recommonmark.transform import AutoStructify
+
+# At the bottom of conf.py
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+            'url_resolver': lambda url: github_doc_root + url,
+            'auto_toc_tree_section': 'Contents',
+            }, True)
+    app.add_transform(AutoStructify)
