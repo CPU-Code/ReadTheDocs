@@ -1,7 +1,7 @@
 '''
 @Author: cpu_code
 @Date: 2020-07-14 16:02:59
-@LastEditTime: 2020-07-14 17:06:10
+@LastEditTime: 2020-07-14 17:36:48
 @FilePath: \ReadTheDocs\conf.py
 @Gitee: https://gitee.com/cpu_code
 @Github: https://github.com/CPU-Code
@@ -44,9 +44,6 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-        'sphinx_markdown_tables',
-]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
