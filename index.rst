@@ -10,7 +10,8 @@ Welcome to ReadTheDocs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   test/test
+
+   test/test.rst
 
 Indices and tables
 ==================
