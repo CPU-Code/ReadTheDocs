@@ -1,0 +1,5 @@
+{
+    "restructuredtext.confPath": "${workspaceFolder}",
+    "python.linting.enabled": false,
+    "python.pythonPath": "D:\\Program Files\\Python\\install\\python.exe"
+}
