@@ -1,0 +1,2156 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. 硬件抽象层 &mdash; ReadTheDocs 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2. www 我好开学 .com" href="../test.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ReadTheDocs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="test.html">1. 是的色泽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test.html">2. www 我好开学 .com</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 硬件抽象层</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#header-n21">1.1. 硬件抽象层</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#android">1.1.1. 开发Android硬件驱动程序</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#header-n51">1.1.1.1. 实现内核驱动程序模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kconfig">1.1.1.2. 修改内核Kconfig文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#makefile">1.1.1.3. 修改内核Makefile文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-n81">1.1.1.4. 编译内核驱动程序模块</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-n91">1.1.1.5. 验证内核驱动程序模块</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#candroid">1.1.2. 开发C可执行程序验证Android硬件驱动程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#header-n117">1.1.3. 开发Android硬件抽象层模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#header-n120">1.1.3.1. 硬件抽象层模块编写规范</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-n139">1.1.3.2. 编写硬件抽象层模块接口</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-n156">1.1.3.3. 硬件抽象层模块的加载过程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-n167">1.1.3.4. 处理硬件设备访问权限问题</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#header-n193">1.1.4. 开发Android硬件访问服务</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#header-n195">1.1.4.1. 定义硬件访问服务接口</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-n203">1.1.4.2. 实现硬件访问服务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jni">1.1.4.3. 实现硬件访问服务的JNI方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#header-n218">1.1.4.4. 启动硬件访问服务</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#header-n226">1.1.5. 开发Android应用程序来使用硬件访问服务</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ReadTheDocs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>硬件抽象层</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/test/hardware_abstraction_layer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="section-number">1. </span>硬件抽象层<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>&lt;!–</p>
+<ul>
+<li><p>&#64;Author: cpu_code</p></li>
+<li><p>&#64;Date: 2020-07-12 22:20:34</p></li>
+<li><p>&#64;LastEditTime: 2020-07-13 22:52:17</p></li>
+<li><p>&#64;FilePath: \notesandroid<em>bottomhardware</em>abstraction_layer.md</p></li>
+<li><p>&#64;Gitee: <a class="reference external" href="https://gitee.com/cpu_code">https://gitee.com/cpu_code</a></p></li>
+<li><p>&#64;Github: <a class="reference external" href="https://github.com/CPU-Code">https://github.com/CPU-Code</a></p></li>
+<li><p>&#64;CSDN: <a class="reference external" href="https://blog.csdn.net/qq_44226094">https://blog.csdn.net/qq_44226094</a></p></li>
+<li><div class="line-block">
+<div class="line">&#64;Gitbook: <a class="reference external" href="https://923992029.gitbook.io/cpucode/">https://923992029.gitbook.io/cpucode/</a></div>
+<div class="line">–&gt;</div>
+</div>
+</li>
+</ul>
+<div class="section" id="header-n21">
+<span id="id2"></span><h2><span class="section-number">1.1. </span>硬件抽象层<a class="headerlink" href="#header-n21" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>&#64;Author: cpu_code</p></li>
+<li><p>&#64;Date: 2020-07-12 22:20:34</p></li>
+<li><p>&#64;LastEditTime: 2020-07-13 22:52:02</p></li>
+<li><p>&#64;FilePath: \notesandroid<em>bottomhardware</em>abstraction_layer.md</p></li>
+<li><p>&#64;Gitee: <a class="reference external" href="https://gitee.com/cpu_code">https://gitee.com/cpu_code</a></p></li>
+<li><p>&#64;Github: <a class="reference external" href="https://github.com/CPU-Code">https://github.com/CPU-Code</a></p></li>
+<li><p>&#64;CSDN: <a class="reference external" href="https://blog.csdn.net/qq_44226094">https://blog.csdn.net/qq_44226094</a></p></li>
+<li><p>&#64;Gitbook: <a class="reference external" href="https://923992029.gitbook.io/cpucode/">https://923992029.gitbook.io/cpucode/</a></p></li>
+</ul>
+<p>Android系统的<strong>硬件抽象层</strong>（Hardware Abstract Layer， HAL）
+运行在用户空间中， 它向下屏蔽硬件驱动模块的实现细节，
+向上提供硬件访问服务。</p>
+<p>Android系统的体系结构 :</p>
+<div class="figure align-default">
+<img alt="" src="https://gitee.com/cpu_code/picture_bed/raw/master//20200713152328.png" />
+</div>
+<hr class="docutils" />
+<div class="section" id="android">
+<span id="header-n46"></span><h3><span class="section-number">1.1.1. </span>开发Android硬件驱动程序<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<div class="section" id="header-n51">
+<span id="id3"></span><h4><span class="section-number">1.1.1.1. </span>实现内核驱动程序模块<a class="headerlink" href="#header-n51" title="Permalink to this headline">¶</a></h4>
+<p>驱动程序freg的目录结构 :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>~/Android/kernel/goldfish
+     drivers
+             freg
+                     freg.h  <span class="c1"># 源代码文件</span>
+                     freg.c  <span class="c1"># 源代码文件</span>
+                     Kconfig <span class="c1"># 编译选项配置文件</span>
+                     Makefile        <span class="c1"># 编译脚本文件</span>
+</pre></div>
+</div>
+<p>freg.h :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// kernel\goldfish\drivers\freg\freg.h</span>
+
+<span class="cp">#ifndef _FAKE_REG_H_</span>
+<span class="cp">#define _FAKE_REG_H_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;linux/cdev.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/semaphore.h&gt;</span><span class="cp"></span>
+
+<span class="c1">//定义了四个字符串常量，分别用来描述虚拟硬件设备 freg 在设备文件系统中的名称</span>
+<span class="cp">#define FREG_DEVICE_NODE_NAME  &quot;freg&quot;</span>
+<span class="cp">#define FREG_DEVICE_FILE_NAME  &quot;freg&quot;</span>
+<span class="cp">#define FREG_DEVICE_PROC_NAME  &quot;freg&quot;</span>
+<span class="cp">#define FREG_DEVICE_CLASS_NAME &quot;freg&quot;</span>
+
+<span class="c1">// 描述虚拟硬件设备freg</span>
+<span class="k">struct</span> <span class="n">fake_reg_dev</span>
+<span class="p">{</span>
+    <span class="c1">// 描述一个虚拟寄存器</span>
+     <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="c1">// 一个信号量, 用来同步访问虚拟寄存器 val</span>
+     <span class="k">struct</span> <span class="n">semaphore</span> <span class="n">sem</span><span class="p">;</span>
+    <span class="c1">// 一个标准的Linux字符设备结构体变量， 用来标志该虚拟硬件设备 freg 的类型为字符设备</span>
+     <span class="k">struct</span> <span class="n">cdev</span> <span class="n">dev</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>freg.c</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// kernel\goldfish\drivers\freg\freg.c</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;linux/init.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/fs.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/proc_fs.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/device.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;asm/uaccess.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;freg.h&quot;</span><span class="cp"></span>
+
+<span class="cm">/* 主设备号 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">freg_major</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="cm">/* 从设备号变量 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">freg_minor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* 设备类别 */</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="n">class</span><span class="o">*</span> <span class="n">freg_class</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="cm">/* 设备变量 */</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">freg_dev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+<span class="cm">/* 传统的设备文件操作方法 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_open</span><span class="p">(</span><span class="k">struct</span> <span class="n">inode</span><span class="o">*</span> <span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_release</span><span class="p">(</span><span class="k">struct</span> <span class="n">inode</span><span class="o">*</span> <span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_read</span><span class="p">(</span><span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">loff_t</span><span class="o">*</span> <span class="n">f_pos</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_write</span><span class="p">(</span><span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">loff_t</span><span class="o">*</span> <span class="n">f_pos</span><span class="p">);</span>
+
+<span class="cm">/* 传统的设备文件操作方法表 */</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="n">file_operations</span> <span class="n">freg_fops</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+        <span class="p">.</span><span class="n">open</span> <span class="o">=</span> <span class="n">freg_open</span><span class="p">,</span>
+        <span class="p">.</span><span class="n">release</span> <span class="o">=</span> <span class="n">freg_release</span><span class="p">,</span>
+        <span class="p">.</span><span class="n">read</span> <span class="o">=</span> <span class="n">freg_read</span><span class="p">,</span>
+        <span class="p">.</span><span class="n">write</span> <span class="o">=</span> <span class="n">freg_write</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="cm">/* devfs文件系统的设备属性操作方法 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_val_show</span><span class="p">(</span><span class="k">struct</span> <span class="n">device</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="k">struct</span> <span class="n">device_attribute</span><span class="o">*</span> <span class="n">attr</span><span class="p">,</span>  <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">);</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_val_store</span><span class="p">(</span><span class="k">struct</span> <span class="n">device</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="k">struct</span> <span class="n">device_attribute</span><span class="o">*</span> <span class="n">attr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">);</span>
+
+<span class="cm">/* devfs文件系统的设备属性 */</span>
+<span class="k">static</span> <span class="nf">DEVICE_ATTR</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">S_IRUGO</span> <span class="o">|</span> <span class="n">S_IWUSR</span><span class="p">,</span> <span class="n">freg_val_show</span><span class="p">,</span> <span class="n">freg_val_store</span><span class="p">);</span>
+
+<span class="cm">/* 打开设备方法 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_open</span><span class="p">(</span><span class="k">struct</span> <span class="n">inode</span><span class="o">*</span> <span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">dev</span><span class="p">;</span>
+
+    <span class="c1">//将自定义设备结构体保存在文件指针的私有数据域中, 以便访问设备时可以直接拿来用</span>
+     <span class="n">dev</span> <span class="o">=</span> <span class="n">container_of</span><span class="p">(</span><span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_cdev</span><span class="p">,</span> <span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="p">,</span> <span class="n">dev</span><span class="p">);</span>
+     <span class="n">filp</span><span class="o">-&gt;</span><span class="n">private_data</span> <span class="o">=</span> <span class="n">dev</span><span class="p">;</span>
+
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 设备文件释放时调用, 空实现 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_release</span><span class="p">(</span><span class="k">struct</span> <span class="n">inode</span><span class="o">*</span> <span class="n">inode</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 读取设备的寄存器val的值 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_read</span><span class="p">(</span><span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">loff_t</span><span class="o">*</span> <span class="n">f_pos</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="kt">ssize_t</span> <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">dev</span> <span class="o">=</span> <span class="n">filp</span><span class="o">-&gt;</span><span class="n">private_data</span><span class="p">;</span>
+
+    <span class="cm">/* 同步访问 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">down_interruptible</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">)))</span>
+    <span class="p">{</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">ERESTARTSYS</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">if</span><span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">))</span>
+    <span class="p">{</span>
+             <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 将寄存器val的值复制到用户提供的缓冲区中 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">copy_to_user</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">),</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)))</span>
+    <span class="p">{</span>
+             <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+             <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">err</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+
+<span class="nl">out</span><span class="p">:</span>
+     <span class="n">up</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">));</span>
+     <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 写设备的寄存器val的值 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_write</span><span class="p">(</span><span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">loff_t</span><span class="o">*</span> <span class="n">f_pos</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">dev</span> <span class="o">=</span> <span class="n">filp</span><span class="o">-&gt;</span><span class="n">private_data</span><span class="p">;</span>
+     <span class="kt">ssize_t</span> <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="cm">/* 同步访问 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">down_interruptible</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">)))</span>
+    <span class="p">{</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">ERESTARTSYS</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">))</span>
+    <span class="p">{</span>
+             <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 将用户提供的缓冲区的值写到设备寄存器中 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">),</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+    <span class="p">{</span>
+             <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+             <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">err</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+
+<span class="nl">out</span><span class="p">:</span>
+     <span class="n">up</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">));</span>
+     <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 将寄存器val的值读取到缓冲区buf中, 内部使用 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">__freg_get_val</span><span class="p">(</span><span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="cm">/* 同步访问 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">down_interruptible</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">)))</span>
+    <span class="p">{</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">ERESTARTSYS</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">val</span> <span class="o">=</span> <span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+     <span class="n">up</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">));</span>
+
+     <span class="k">return</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">PAGE_SIZE</span><span class="p">,</span> <span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* 把缓冲区buf的值写到设备寄存器val中, 内部使用 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">__freg_set_val</span><span class="p">(</span><span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="cm">/* 将字符串转换为数字 */</span>
+     <span class="n">val</span> <span class="o">=</span> <span class="n">simple_strtol</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+    <span class="cm">/* 同步访问 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">down_interruptible</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">)))</span>
+    <span class="p">{</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">ERESTARTSYS</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+     <span class="n">up</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">));</span>
+
+     <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 读设备属性val的值 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_val_show</span><span class="p">(</span><span class="k">struct</span> <span class="n">device</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="k">struct</span> <span class="n">device_attribute</span><span class="o">*</span> <span class="n">attr</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">hdev</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span><span class="p">)</span><span class="n">dev_get_drvdata</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+
+     <span class="k">return</span> <span class="n">__freg_get_val</span><span class="p">(</span><span class="n">hdev</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* 写设备属性val的值 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_val_store</span><span class="p">(</span><span class="k">struct</span> <span class="n">device</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span>
+                              <span class="k">struct</span> <span class="n">device_attribute</span><span class="o">*</span> <span class="n">attr</span><span class="p">,</span>
+                              <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span>
+                              <span class="kt">size_t</span> <span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">hdev</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span><span class="p">)</span><span class="n">dev_get_drvdata</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+
+     <span class="k">return</span> <span class="n">__freg_set_val</span><span class="p">(</span><span class="n">hdev</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* 读取设备寄存器 val 的值 , 保存到page 缓冲区中*/</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_proc_read</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">page</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">start</span><span class="p">,</span>
+                              <span class="kt">off_t</span> <span class="n">off</span><span class="p">,</span>
+                              <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+                              <span class="kt">int</span><span class="o">*</span> <span class="n">eof</span><span class="p">,</span>
+                              <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">off</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="o">*</span><span class="n">eof</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+             <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">return</span> <span class="n">__freg_get_val</span><span class="p">(</span><span class="n">freg_dev</span><span class="p">,</span> <span class="n">page</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* 把缓冲区的值 buff 保存到设备寄存器 val 中 */</span>
+<span class="k">static</span> <span class="kt">ssize_t</span> <span class="nf">freg_proc_write</span><span class="p">(</span><span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">filp</span><span class="p">,</span>
+                               <span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="n">buff</span><span class="p">,</span>
+                               <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">len</span><span class="p">,</span>
+                               <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="kt">int</span> <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="kt">char</span><span class="o">*</span> <span class="n">page</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+     <span class="k">if</span><span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="n">PAGE_SIZE</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;The buff is too large: %lu.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">page</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">__get_free_page</span><span class="p">(</span><span class="n">GFP_KERNEL</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">page</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Failed to alloc page.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 先把用户提供的缓冲区的值复制到内核缓冲区中 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">buff</span><span class="p">,</span> <span class="n">len</span><span class="p">))</span>
+    <span class="p">{</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span> <span class="s">&quot;Failed to copy buff from user.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+             <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+
+             <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">err</span> <span class="o">=</span> <span class="n">__freg_set_val</span><span class="p">(</span><span class="n">freg_dev</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
+
+<span class="nl">out</span><span class="p">:</span>
+     <span class="n">free_page</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">page</span><span class="p">);</span>
+     <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 创建 /proc/freg 文件 */</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">freg_create_proc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">struct</span> <span class="n">proc_dir_entry</span><span class="o">*</span> <span class="n">entry</span><span class="p">;</span>
+
+     <span class="n">entry</span> <span class="o">=</span> <span class="n">create_proc_entry</span><span class="p">(</span><span class="n">FREG_DEVICE_PROC_NAME</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">entry</span><span class="o">-&gt;</span><span class="n">owner</span> <span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">;</span>
+             <span class="n">entry</span><span class="o">-&gt;</span><span class="n">read_proc</span> <span class="o">=</span> <span class="n">freg_proc_read</span><span class="p">;</span>
+             <span class="n">entry</span><span class="o">-&gt;</span><span class="n">write_proc</span> <span class="o">=</span> <span class="n">freg_proc_write</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* 删除 /proc/freg 文件 */</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">freg_remove_proc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">remove_proc_entry</span><span class="p">(</span><span class="n">FREG_DEVICE_PROC_NAME</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* 初始化设备 */</span>
+<span class="k">static</span> <span class="kt">int</span>  <span class="nf">__freg_setup_dev</span><span class="p">(</span><span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="o">*</span> <span class="n">dev</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+     <span class="kt">dev_t</span> <span class="n">devno</span> <span class="o">=</span> <span class="n">MKDEV</span><span class="p">(</span><span class="n">freg_major</span><span class="p">,</span> <span class="n">freg_minor</span><span class="p">);</span>
+
+     <span class="n">memset</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="p">));</span>
+
+    <span class="cm">/* 初始化字符设备 */</span>
+     <span class="n">cdev_init</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">freg_fops</span><span class="p">);</span>
+     <span class="n">dev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">.</span><span class="n">owner</span> <span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">;</span>
+     <span class="n">dev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">.</span><span class="n">ops</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">freg_fops</span><span class="p">;</span>
+
+    <span class="cm">/* 注册字符设备 */</span>
+     <span class="n">err</span> <span class="o">=</span> <span class="n">cdev_add</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">),</span><span class="n">devno</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 初始化信号量 */</span>
+     <span class="n">init_MUTEX</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">sem</span><span class="p">));</span>
+    <span class="cm">/* 初始化寄存器val的值 */</span>
+     <span class="n">dev</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 模块加载方法 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__init</span> <span class="nf">freg_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="kt">int</span> <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+     <span class="kt">dev_t</span> <span class="n">dev</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="k">struct</span> <span class="n">device</span><span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+     <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Initializing freg device.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="cm">/* 动态分配主设备号 和 从设备号 */</span>
+     <span class="n">err</span> <span class="o">=</span> <span class="n">alloc_chrdev_region</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dev</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">FREG_DEVICE_NODE_NAME</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Failed to alloc char dev region.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+             <span class="k">goto</span> <span class="n">fail</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">freg_major</span> <span class="o">=</span> <span class="n">MAJOR</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+     <span class="n">freg_minor</span> <span class="o">=</span> <span class="n">MINOR</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+
+    <span class="cm">/* 分配freg设备结构体 */</span>
+     <span class="n">freg_dev</span> <span class="o">=</span> <span class="n">kmalloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">fake_reg_dev</span><span class="p">),</span> <span class="n">GFP_KERNEL</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">freg_dev</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Failed to alloc freg device.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+             <span class="k">goto</span> <span class="n">unregister</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 初始化设备 */</span>
+     <span class="n">err</span> <span class="o">=</span> <span class="n">__freg_setup_dev</span><span class="p">(</span><span class="n">freg_dev</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Failed to setup freg device: %d.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+             <span class="k">goto</span> <span class="n">cleanup</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 在/sys/class/ 目录下创建设备类别目录freg */</span>
+     <span class="n">freg_class</span> <span class="o">=</span> <span class="n">class_create</span><span class="p">(</span><span class="n">THIS_MODULE</span><span class="p">,</span> <span class="n">FREG_DEVICE_CLASS_NAME</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">freg_class</span><span class="p">))</span>
+    <span class="p">{</span>
+             <span class="n">err</span> <span class="o">=</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">freg_class</span><span class="p">);</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Failed to create freg device class.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+             <span class="k">goto</span> <span class="n">destroy_cdev</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 在 /dev/ 目录 和 /sys/class/freg目录下分别创建设备文件frag */</span>
+     <span class="n">temp</span> <span class="o">=</span> <span class="n">device_create</span><span class="p">(</span><span class="n">freg_class</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">FREG_DEVICE_FILE_NAME</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+    <span class="p">{</span>
+             <span class="n">err</span> <span class="o">=</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Failed to create freg device.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+             <span class="k">goto</span> <span class="n">destroy_class</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 在 /sys/class/freg/freg 目录下创建属性文件val */</span>
+     <span class="n">err</span> <span class="o">=</span> <span class="n">device_create_file</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dev_attr_val</span><span class="p">);</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Failed to create attribute val of freg device.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                <span class="k">goto</span> <span class="n">destroy_device</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">dev_set_drvdata</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">freg_dev</span><span class="p">);</span>
+
+    <span class="cm">/* 创建 /proc/freg文件 */</span>
+     <span class="n">freg_create_proc</span><span class="p">();</span>
+
+     <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Succedded to initialize freg device.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nl">destroy_device</span><span class="p">:</span>
+     <span class="n">device_destroy</span><span class="p">(</span><span class="n">freg_class</span><span class="p">,</span> <span class="n">dev</span><span class="p">);</span>
+<span class="nl">destroy_class</span><span class="p">:</span>
+     <span class="n">class_destroy</span><span class="p">(</span><span class="n">freg_class</span><span class="p">);</span>
+<span class="nl">destroy_cdev</span><span class="p">:</span>
+     <span class="n">cdev_del</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">freg_dev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">));</span>
+<span class="nl">cleanup</span><span class="p">:</span>
+     <span class="n">kfree</span><span class="p">(</span><span class="n">freg_dev</span><span class="p">);</span>
+<span class="nl">unregister</span><span class="p">:</span>
+     <span class="n">unregister_chrdev_region</span><span class="p">(</span><span class="n">MKDEV</span><span class="p">(</span><span class="n">freg_major</span><span class="p">,</span> <span class="n">freg_minor</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nl">fail</span><span class="p">:</span>
+     <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 模块卸载方法 */</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">__exit</span> <span class="nf">freg_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="kt">dev_t</span> <span class="n">devno</span> <span class="o">=</span> <span class="n">MKDEV</span><span class="p">(</span><span class="n">freg_major</span><span class="p">,</span> <span class="n">freg_minor</span><span class="p">);</span>
+
+     <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span><span class="s">&quot;Destroy freg device.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="cm">/* 删除 /proc/freg 文件 */</span>
+     <span class="n">freg_remove_proc</span><span class="p">();</span>
+
+    <span class="cm">/* 注销设备类别 和 设备 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">freg_class</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">device_destroy</span><span class="p">(</span><span class="n">freg_class</span><span class="p">,</span> <span class="n">MKDEV</span><span class="p">(</span><span class="n">freg_major</span><span class="p">,</span> <span class="n">freg_minor</span><span class="p">));</span>
+             <span class="n">class_destroy</span><span class="p">(</span><span class="n">freg_class</span><span class="p">);</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 删除字符设备 和 释放设备内存 */</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">freg_dev</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">cdev_del</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">freg_dev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">));</span>
+             <span class="n">kfree</span><span class="p">(</span><span class="n">freg_dev</span><span class="p">);</span>
+     <span class="p">}</span>
+
+    <span class="cm">/* 释放设备号资源 */</span>
+     <span class="n">unregister_chrdev_region</span><span class="p">(</span><span class="n">devno</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">&quot;Fake Register Driver&quot;</span><span class="p">);</span>
+
+<span class="n">module_init</span><span class="p">(</span><span class="n">freg_init</span><span class="p">);</span>
+<span class="n">module_exit</span><span class="p">(</span><span class="n">freg_exit</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Kconfig :</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span># kernel\goldfish\drivers\freg\Kconfig
+config FREG
+     tristate &quot;Fake Register Driver&quot;
+     default n
+     help
+     This is the freg driver for android system.
+</pre></div>
+</div>
+<p>Makefile :</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># kernel\goldfish\drivers\freg\Makefile</span>
+
+<span class="c">#  $（CONFIG_FREG） 是一个变量， 它的值与驱动程序freg的编译选项有关</span>
+
+<span class="c">#如果选择将驱动程序freg内建到内核中， 那么变量$（CONFIG_FREG） 的值为y；</span>
+<span class="c"># 如果选择以模块的方式来编译驱动程序freg， 那么变量$（CONFIG_FREG） 的值为m；</span>
+<span class="c"># 如果变量$（CONFIG_FREG） 的值既不为y， 也不为m，那么驱动程序freg就不会被编译</span>
+
+<span class="nv">obj-$(CONFIG_FREG)</span> <span class="o">+=</span> freg.o
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="kconfig">
+<span id="header-n69"></span><h4><span class="section-number">1.1.1.2. </span>修改内核Kconfig文件<a class="headerlink" href="#kconfig" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span># arch/arm/Kconfig
+
+menu &quot;Device Drivers&quot;
+
+# 将驱动程序freg的Kconfig文件包含进来
+source &quot;drivers/freg/Kconfig&quot;
+
+source &quot;drivers/base/Kconfig&quot;
+
+source &quot;drivers/connector/Kconfig&quot;
+
+# ...
+
+endmenu
+</pre></div>
+</div>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span># drivers/Kconfig
+
+menu &quot;Device Drivers&quot;
+
+# 将驱动程序 freg 的 Kconfig 文件包含进来
+source &quot;drivers/freg/Kconfig&quot;
+
+source &quot;drivers/base/Kconfig&quot;
+
+# ...
+
+endmenu
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="makefile">
+<span id="header-n76"></span><h4><span class="section-number">1.1.1.3. </span>修改内核Makefile文件<a class="headerlink" href="#makefile" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># drivers/Makefile</span>
+
+<span class="c"># 当 make 编译内核时，编译系统就会对驱动程序 freg 进行编译</span>
+<span class="nv">obj-$(CONFIG_FREG)</span>           <span class="o">+=</span> freg/
+<span class="nv">obj-y</span>                                <span class="o">+=</span> gpio/
+<span class="nv">obj-$(CONFIG_PCI)</span>            <span class="o">+=</span> pci/
+<span class="c"># ...</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="header-n81">
+<span id="id4"></span><h4><span class="section-number">1.1.1.4. </span>编译内核驱动程序模块<a class="headerlink" href="#header-n81" title="Permalink to this headline">¶</a></h4>
+<p>在编译驱动程序freg之前， 我们需要执行make
+menuconfig命令来配置它的编译方式</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make menuconfig
+</pre></div>
+</div>
+<p>执行make命令来编译驱动程序freg</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make
+</pre></div>
+</div>
+<p>驱动程序freg编译成功 :</p>
+<div class="figure align-default">
+<img alt="" src="https://gitee.com/cpu_code/picture_bed/raw/master//20200713165801.png" />
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="header-n91">
+<span id="id5"></span><h4><span class="section-number">1.1.1.5. </span>验证内核驱动程序模块<a class="headerlink" href="#header-n91" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用 得到的内核镜像文件zImage来启动Android模拟器</span>
+emulator -kernel kernel/goldfish/arch/arm/boot/zImage <span class="p">&amp;</span>
+
+<span class="c1"># # 用adb工具连接上</span>
+adb shell
+
+<span class="c1"># 进入 /dev目录下</span>
+<span class="nb">cd</span> dev
+
+<span class="c1"># 查看 一个设备文件freg</span>
+ls freg
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入到/proc</span>
+<span class="nb">cd</span> proc
+
+<span class="c1"># 读取文件freg的内容</span>
+cat freg
+
+<span class="c1"># 往文件freg中写入一个新的内容</span>
+<span class="nb">echo</span> <span class="s1">&#39;5&#39;</span> &gt; freg
+
+<span class="c1"># 将文件freg的内容读取出来</span>
+cat freg
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入到/sys/class/freg/freg</span>
+<span class="nb">cd</span> sys/class/freg/freg
+
+<span class="c1"># 读取val文件的内容</span>
+cat val
+
+<span class="c1"># 往文件val中写入一个新的内容</span>
+<span class="nb">echo</span> <span class="s1">&#39;&#39;</span> &gt; freg
+
+<span class="c1"># 将文件val中的内容读取出</span>
+cat freg
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="candroid">
+<span id="header-n101"></span><h3><span class="section-number">1.1.2. </span>开发C可执行程序验证Android硬件驱动程序<a class="headerlink" href="#candroid" title="Permalink to this headline">¶</a></h3>
+<p>在Android源代码工程环境中开发的C可执行程序源文件一般保存在external目录中，因此，
+我们进入到external目录中， 并且创建一个freg目录，
+用来保存我们将要开发的C可执行程序源文件。</p>
+<p>目录结构 :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>~/Android
+     exiternal
+             freg
+                     freg.c
+                     Android.mk
+</pre></div>
+</div>
+<p>源文件freg.c :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define FREG_DEVICE_NAME &quot;/dev/freg&quot;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">fd</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 以读写方式打开设备文件/dev/freg</span>
+    <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">FREG_DEVICE_NAME</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">fd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+     <span class="p">{</span>
+             <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Failed to open device %s.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">FREG_DEVICE_NAME</span><span class="p">);</span>
+             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Read original value:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="c1">// 读取它的内容， 即读取虚拟硬件设备 freg 的寄存器 val 的内容</span>
+     <span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">val</span><span class="p">));</span>
+    <span class="c1">// 打印出来</span>
+     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d.</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+
+    <span class="n">val</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Write value %d to %s.</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">FREG_DEVICE_NAME</span><span class="p">);</span>
+    <span class="c1">// 将一个整数 5 写入到虚拟硬件设备 freg 的寄存器 val 中</span>
+     <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">val</span><span class="p">));</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Read the value again:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="c1">// 读取它的内容， 即读取虚拟硬件设备 freg 的寄存器 val 的内容</span>
+    <span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">val</span><span class="p">));</span>
+    <span class="c1">// 打印</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d.</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+
+     <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>编译脚本文件Android.mk :</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># 将编译结果保存在 out/target/product/gerneric/system/bin 目录中</span>
+<span class="nv">LOCAL_PATH</span> <span class="o">:=</span> <span class="k">$(</span>call my-dir<span class="k">)</span>
+<span class="cp">include $(CLEAR_VARS)</span>
+<span class="nv">LOCAL_MODULE_TAGS</span> <span class="o">:=</span> optional
+<span class="nv">LOCAL_MODULE</span> <span class="o">:=</span> freg
+<span class="nv">LOCAL_SRC_FILES</span> <span class="o">:=</span> <span class="k">$(</span>call all-subdir-c-files<span class="k">)</span>
+<span class="c"># 当前要编译的是一个可执行应用程序模块</span>
+<span class="cp">include $(BUILD_EXECUTABLE)</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 编译</span>
+mmm ./external/freg/
+<span class="c1"># 打包这个C可执行程序</span>
+make snod
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 将得到的 system.img 文件启动 Android模拟器</span>
+emulator -kernal kernel/goldfish/arch/arm/boot/zImage <span class="p">&amp;</span>
+
+<span class="c1"># adb工具连接上它</span>
+adb shell
+
+<span class="c1"># 进入到/system/bin目录中</span>
+<span class="nb">cd</span> system/bin
+
+<span class="c1"># 执行里面的freg文件</span>
+./freg
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="header-n117">
+<span id="id6"></span><h3><span class="section-number">1.1.3. </span>开发Android硬件抽象层模块<a class="headerlink" href="#header-n117" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="header-n120">
+<span id="id7"></span><h4><span class="section-number">1.1.3.1. </span>硬件抽象层模块编写规范<a class="headerlink" href="#header-n120" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="header-n123">
+<span id="id8"></span><h5><span class="section-number">1.1.3.1.1. </span>硬件抽象层模块文件命名规范<a class="headerlink" href="#header-n123" title="Permalink to this headline">¶</a></h5>
+<p>硬件抽象层模块文件的命名规范 :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// hardware/libhardware/hardware.c</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * There are a set of variant filename for modules. The form of the filename</span>
+<span class="cm"> * is &quot;&lt;MODULE_ID&gt;.variant.so&quot; so for the led module the Dream variants</span>
+<span class="cm"> * of base &quot;ro.product.board&quot;, &quot;ro.board.platform&quot; and &quot;ro.arch&quot; would be:</span>
+<span class="cm"> *</span>
+<span class="cm"> * MODULE_ID : 模块的ID</span>
+<span class="cm"> * led.trout.so</span>
+<span class="cm"> * led.msm7k.so</span>
+<span class="cm"> * led.ARMV6.so</span>
+<span class="cm"> * led.default.so</span>
+<span class="cm"> */</span>
+
+<span class="c1">// variant 表示四个系统属性 ro.hardware、 ro.product.board、 ro.board.platform 和 ro.arch 之一</span>
+<span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">variant_keys</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;ro.hardware&quot;</span><span class="p">,</span>   <span class="cm">/* 由 init 进程负责设置 */</span> <span class="cm">/* This goes first so that it can pick up a different</span>
+<span class="cm">                       file on the emulator. */</span>
+    <span class="s">&quot;ro.product.board&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ro.board.platform&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ro.arch&quot;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n127">
+<span id="id9"></span><h5><span class="section-number">1.1.3.1.2. </span>硬件抽象层模块结构体定义规范<a class="headerlink" href="#header-n127" title="Permalink to this headline">¶</a></h5>
+<p>结构体hw<em>module</em>t :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// hardware\libhardware\include\hardware\hardware.h</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Value for the hw_module_t.tag field</span>
+<span class="cm"> */</span>
+
+<span class="cp">#define MAKE_TAG_CONSTANT(A,B,C,D) (((A) &lt;&lt; 24) | ((B) &lt;&lt; 16) | ((C) &lt;&lt; 8) | (D))</span>
+
+<span class="cp">#define HARDWARE_MODULE_TAG MAKE_TAG_CONSTANT(&#39;H&#39;, &#39;W&#39;, &#39;M&#39;, &#39;T&#39;)</span>
+<span class="cp">#define HARDWARE_DEVICE_TAG MAKE_TAG_CONSTANT(&#39;H&#39;, &#39;W&#39;, &#39;D&#39;, &#39;T&#39;)</span>
+
+<span class="k">struct</span> <span class="n">hw_module_t</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">hw_module_methods_t</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">hw_device_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Every hardware module must have a data structure named HAL_MODULE_INFO_SYM</span>
+<span class="cm"> * and the fields of this data structure must begin with hw_module_t</span>
+<span class="cm"> * followed by module specific information.</span>
+<span class="cm"> */</span>
+<span class="cm">/*</span>
+<span class="cm">硬件抽象层中的每一个模块都必须自定义一个硬件抽象层模块结构体，</span>
+<span class="cm">而且它的第一个成员变量的类型必须为 hw_module_t</span>
+<span class="cm">*/</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">hw_module_t</span>
+<span class="p">{</span>
+    <span class="cm">/** tag must be initialized to HARDWARE_MODULE_TAG */</span>
+    <span class="cm">/* 成员变量 tag 的值必须设置为 HARDWARE_MODULE_TAG， 即设置为一个常量值（&#39;H&#39;＜＜24|&#39;W&#39;＜＜16|&#39;M&#39;＜＜8|&#39;T&#39;）,</span>
+<span class="cm">       用来标志这是一个硬件抽象层模块结构体</span>
+<span class="cm">     */</span>
+    <span class="kt">uint32_t</span> <span class="n">tag</span><span class="p">;</span>
+
+    <span class="cm">/** major version number for the module */</span>
+    <span class="kt">uint16_t</span> <span class="n">version_major</span><span class="p">;</span>
+
+    <span class="cm">/** minor version number of the module */</span>
+    <span class="kt">uint16_t</span> <span class="n">version_minor</span><span class="p">;</span>
+
+    <span class="cm">/** Identifier of module */</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">id</span><span class="p">;</span>
+
+    <span class="cm">/** Name of this module */</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+
+    <span class="cm">/** Author/owner/implementor of the module */</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">author</span><span class="p">;</span>
+
+    <span class="cm">/** Modules methods */</span>
+    <span class="cm">/* 定义了一个硬件抽象层模块的操作方法列表 */</span>
+    <span class="k">struct</span> <span class="n">hw_module_methods_t</span><span class="o">*</span> <span class="n">methods</span><span class="p">;</span>
+
+    <span class="cm">/** module&#39;s dso */</span>
+    <span class="cm">/* 保存加载硬件抽象层模块后得到的句柄值 */</span>
+    <span class="cm">/*</span>
+<span class="cm">     * 加载硬件抽象层模块的过程实际上就是调用 dlopen 函数来加载与其对应的动态链接库文件的过程。</span>
+<span class="cm">     * 在调用 dlclose 函数来卸载这个硬件抽象层模块时， 要用到这个句柄值</span>
+<span class="cm">     */</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">dso</span><span class="p">;</span>
+
+    <span class="cm">/** padding to 128 bytes, reserved for future use */</span>
+    <span class="kt">uint32_t</span> <span class="n">reserved</span><span class="p">[</span><span class="mi">32</span><span class="o">-</span><span class="mi">7</span><span class="p">];</span>
+
+<span class="p">}</span> <span class="n">hw_module_t</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Name of the hal_module_info</span>
+<span class="cm"> */</span>
+<span class="cm">/*</span>
+<span class="cm">硬件抽象层中的每一个模块都必须存在一个导出符号 HAL_MODULE_IFNO_SYM， 即“HMI”，</span>
+<span class="cm">它指向一个自定义的硬件抽象层模块结构体</span>
+<span class="cm">*/</span>
+<span class="cp">#define HAL_MODULE_INFO_SYM         HMI</span>
+</pre></div>
+</div>
+<p>struct hw<em>module</em>methods_t :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// hardware\libhardware\include\hardware\hardware.h</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">hw_module_methods_t</span>
+<span class="p">{</span>
+    <span class="cm">/** Open a specific device */</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @function: 打开硬件抽象层模块中的硬件设备</span>
+<span class="cm">     * @parameter:</span>
+<span class="cm">     *               module : 要打开的硬件设备所在的模块</span>
+<span class="cm">     *               id : 要打开的硬件设备的ID</span>
+<span class="cm">     *               device : 一个输出参数，描述一个已经打开的硬件设备</span>
+<span class="cm">     * @return:</span>
+<span class="cm">     *     success:</span>
+<span class="cm">     *     error:</span>
+<span class="cm">     * @note:</span>
+<span class="cm">     */</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">open</span><span class="p">)(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span><span class="o">*</span> <span class="n">module</span><span class="p">,</span>
+                <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">id</span><span class="p">,</span>
+                <span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">**</span> <span class="n">device</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="n">hw_module_methods_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>struct hw<em>device</em>t :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// hardware\libhardware\include\hardware\hardware.h</span>
+
+<span class="cp">#define HARDWARE_DEVICE_TAG MAKE_TAG_CONSTANT(&#39;H&#39;, &#39;W&#39;, &#39;D&#39;, &#39;T&#39;)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Every device data structure must begin with hw_device_t</span>
+<span class="cm"> * followed by module specific public methods and attributes.</span>
+<span class="cm"> */</span>
+<span class="cm">/*</span>
+<span class="cm"> * 硬件抽象层模块中的每一个硬件设备都必须自定义一个硬件设备结构体，</span>
+<span class="cm"> * 而且它的第一个成员变量的类型必须为hw_device_t</span>
+<span class="cm"> */</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">hw_device_t</span>
+<span class="p">{</span>
+    <span class="cm">/** tag must be initialized to HARDWARE_DEVICE_TAG */</span>
+    <span class="cm">/*</span>
+<span class="cm">     * tag 必须 == HARDWARE_DEVICE_TAG，即设置为一个常量值（&#39;H&#39;＜＜24|&#39;W&#39;＜＜16|&#39;D&#39;＜＜8|&#39;T&#39;）,</span>
+<span class="cm">     * 用来标志这是一个硬件抽象层中的硬件设备结构体</span>
+<span class="cm">     */</span>
+    <span class="kt">uint32_t</span> <span class="n">tag</span><span class="p">;</span>
+
+    <span class="cm">/** version number for hw_device_t */</span>
+    <span class="kt">uint32_t</span> <span class="n">version</span><span class="p">;</span>
+
+    <span class="cm">/** reference to the module this device belongs to */</span>
+    <span class="k">struct</span> <span class="n">hw_module_t</span><span class="o">*</span> <span class="n">module</span><span class="p">;</span>
+
+    <span class="cm">/** padding reserved for future use */</span>
+    <span class="kt">uint32_t</span> <span class="n">reserved</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span>
+
+    <span class="cm">/** Close this device */</span>
+    <span class="cm">/* 关闭一个硬件设备 */</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">close</span><span class="p">)(</span><span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">*</span> <span class="n">device</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="n">hw_device_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="header-n139">
+<span id="id10"></span><h4><span class="section-number">1.1.3.2. </span>编写硬件抽象层模块接口<a class="headerlink" href="#header-n139" title="Permalink to this headline">¶</a></h4>
+<p>将虚拟硬件设备freg在硬件抽象层中的模块名称定义为freg</p>
+<p>目录结构：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>~/Android/hardware/libhardware
+     include
+             hardware
+                     freg.h
+     Modules
+             freg
+                     freg.cpp
+                     Android.mk
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">freg.h</span></code> 源代码文件</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Android/hardware/libhardware/include/hardware/freg.h</span>
+
+<span class="cp">#ifndef ANDROID_FREG_INTERFACE_H</span>
+<span class="cp">#define ANDROID_FREG_INTERFACE_H</span>
+
+<span class="n">__BEGIN_DECLS</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * The id of this module</span>
+<span class="cm"> */</span>
+<span class="c1">// 定义模块ID</span>
+<span class="cp">#define FREG_HARDWARE_MODULE_ID &quot;freg&quot;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * The id of this device</span>
+<span class="cm"> */</span>
+<span class="c1">// 定义设备ID</span>
+<span class="cp">#define FREG_HARDWARE_DEVICE_ID &quot;freg&quot;</span>
+
+<span class="c1">// 自定义模块结构体</span>
+<span class="k">struct</span> <span class="n">freg_module_t</span>
+<span class="p">{</span>
+    <span class="c1">// 第一个成员变量的类型为 hw_module_t</span>
+     <span class="k">struct</span> <span class="n">hw_module_t</span> <span class="n">common</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 自定义设备结构体 , 描述虚拟硬件设备 freg</span>
+<span class="k">struct</span> <span class="n">freg_device_t</span>
+<span class="p">{</span>
+    <span class="c1">// 第一个成员变量的类型为 hw_device_t</span>
+     <span class="k">struct</span> <span class="n">hw_device_t</span> <span class="n">common</span><span class="p">;</span>
+    <span class="c1">// 一个文件描述符 , 用来描述打开的设备文件/dev/freg</span>
+     <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+
+    <span class="c1">// 写虚拟硬件设备 freg 的寄存器 val 的内容</span>
+     <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">set_val</span><span class="p">)(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">);</span>
+    <span class="c1">// 读虚拟硬件设备 freg 的寄存器 val 的内容</span>
+     <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">get_val</span><span class="p">)(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">val</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="n">__END_DECLS</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>freg.cpp 硬件抽象层模块 freg 的实现文件 :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Android/hardware/libhardware/Modules/freg/freg.cpp</span>
+
+<span class="cp">#define LOG_TAG &quot;FregHALStub&quot;</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;hardware/hardware.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;hardware/freg.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;errno.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cutils/log.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cutils/atomic.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define DEVICE_NAME &quot;/dev/freg&quot;</span>
+<span class="cp">#define MODULE_NAME &quot;Freg&quot;</span>
+<span class="cp">#define MODULE_AUTHOR &quot;cpucode&quot;</span>
+
+<span class="cm">/* 设备打开接口 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_device_open</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span><span class="o">*</span> <span class="n">module</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">id</span><span class="p">,</span> <span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">**</span> <span class="n">device</span><span class="p">);</span>
+<span class="cm">/* 设备关闭接口 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_device_close</span><span class="p">(</span><span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">*</span> <span class="n">device</span><span class="p">);</span>
+<span class="cm">/* 设备寄存器写接口 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_set_val</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">);</span>
+<span class="cm">/* 设备寄存器读接口 */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_get_val</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">val</span><span class="p">);</span>
+
+<span class="cm">/* 定义模块操作方法结构体变量 */</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="n">hw_module_methods_t</span> <span class="n">freg_module_methods</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="nl">open</span><span class="p">:</span> <span class="n">freg_device_open</span>
+<span class="p">};</span>
+
+<span class="cm">/* 定义模块结构体变量 */</span>
+<span class="c1">// 每一个硬件抽象层模块必须导出一个名称为 HAL_MODULE_INFO_SYM 的符号</span>
+<span class="k">struct</span> <span class="n">freg_module_t</span> <span class="n">HAL_MODULE_INFO_SYM</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="nl">common</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// tag 必须 == HARDWARE_MODULE_TAG</span>
+             <span class="nl">tag</span><span class="p">:</span> <span class="n">HARDWARE_MODULE_TAG</span><span class="p">,</span>
+             <span class="nl">version_major</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+             <span class="nl">version_minor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+             <span class="nl">id</span><span class="p">:</span> <span class="n">FREG_HARDWARE_MODULE_ID</span><span class="p">,</span>
+             <span class="nl">name</span><span class="p">:</span> <span class="n">MODULE_NAME</span><span class="p">,</span>
+             <span class="nl">author</span><span class="p">:</span> <span class="n">MODULE_AUTHOR</span><span class="p">,</span>
+             <span class="nl">methods</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">freg_module_methods</span><span class="p">,</span>
+     <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 打开操作</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_device_open</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span><span class="o">*</span> <span class="n">module</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">id</span><span class="p">,</span>
+                            <span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">**</span> <span class="n">device</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 判断 id 与虚拟硬件设备freg的ID值是否 匹配</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">strcmp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">FREG_HARDWARE_DEVICE_ID</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">;</span>
+
+        <span class="n">dev</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="p">));</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Failed to alloc space for freg_device_t.&quot;</span><span class="p">);</span>
+                     <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+             <span class="p">}</span>
+
+        <span class="n">memset</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="p">));</span>
+
+        <span class="c1">// 硬件设备标签（dev-＞common.tag） 必须 == HARDWARE_DEVICE_TAG</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">HARDWARE_DEVICE_TAG</span><span class="p">;</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">version</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">module</span> <span class="o">=</span> <span class="p">(</span><span class="n">hw_module_t</span><span class="o">*</span><span class="p">)</span><span class="n">module</span><span class="p">;</span>
+        <span class="c1">// 关闭函数设置为 freg_device_close</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">close</span> <span class="o">=</span> <span class="n">freg_device_close</span><span class="p">;</span>
+        <span class="c1">// 写函数</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">set_val</span> <span class="o">=</span> <span class="n">freg_set_val</span><span class="p">;</span>
+        <span class="c1">// 读函数</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">get_val</span> <span class="o">=</span> <span class="n">freg_get_val</span><span class="p">;</span>
+
+        <span class="c1">// 打开虚拟硬件设备文件/dev/freg ， 且将得到的文件描述符保存在结构体 freg_device_t 的成员变量 fd 中</span>
+        <span class="k">if</span><span class="p">((</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">DEVICE_NAME</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Failed to open device file /dev/freg -- %s.&quot;</span><span class="p">,</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+                     <span class="n">free</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+
+                     <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="o">*</span><span class="n">device</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">);</span>
+
+        <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Open device file /dev/freg successfully.&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 虚拟硬件设备freg的关闭函数</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_device_close</span><span class="p">(</span><span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">*</span> <span class="n">device</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">freg_device</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span><span class="p">)</span><span class="n">device</span><span class="p">;</span>
+
+     <span class="k">if</span><span class="p">(</span><span class="n">freg_device</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 关闭设备文件/dev/freg</span>
+             <span class="n">close</span><span class="p">(</span><span class="n">freg_device</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">);</span>
+        <span class="c1">// 释放设备</span>
+             <span class="n">free</span><span class="p">(</span><span class="n">freg_device</span><span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_set_val</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Null dev pointer.&quot;</span><span class="p">);</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Set value %d to device file /dev/freg.&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+    <span class="c1">// 写虚拟硬件设备freg的寄存器val的内容</span>
+     <span class="n">write</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">val</span><span class="p">));</span>
+
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_get_val</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">val</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Null dev pointer.&quot;</span><span class="p">);</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">val</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Null val pointer.&quot;</span><span class="p">);</span>
+             <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+     <span class="p">}</span>
+
+    <span class="c1">// 读虚拟硬件设备freg的寄存器val的内容</span>
+     <span class="n">read</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">val</span><span class="p">));</span>
+
+     <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Get value %d from device file /dev/freg.&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">val</span><span class="p">);</span>
+
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Android.mk 编译脚本文件 :</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># Android/hardware/libhardware/Modules/freg/Android.mk</span>
+<span class="nv">LOCAL_PATH</span> <span class="o">:=</span> <span class="k">$(</span>call my-dir<span class="k">)</span>
+<span class="cp">include $(CLEAR_VARS)</span>
+<span class="nv">LOCAL_MODULE_TAGS</span> <span class="o">:=</span> optional
+<span class="nv">LOCAL_PRELINK_MODULE</span> <span class="o">:=</span> <span class="nb">false</span>
+<span class="c"># 保存在 out/target/product/generic/system/lib/hw</span>
+<span class="nv">LOCAL_MODULE_PATH</span> <span class="o">:=</span> <span class="k">$(</span>TARGET_OUT_SHARED_LIBRARIES<span class="k">)</span>/hw
+<span class="nv">LOCAL_SHARED_LIBRARIES</span> <span class="o">:=</span> liblog
+<span class="nv">LOCAL_SRC_FILES</span> <span class="o">:=</span> freg.cpp
+<span class="nv">LOCAL_MODULE</span> <span class="o">:=</span> freg.default
+<span class="c"># 将该硬件抽象层模块编译成一个动态链接库文件， 名称为 freg.default</span>
+<span class="cp">include $(BUILD_SHARED_LIBRARY)</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 编译</span>
+mmm ./hardware/libhardware/moduels/freg/
+
+<span class="c1"># 打包</span>
+make snod
+
+<span class="c1"># 在 out/target/product/generic/system/lib/hw 目录下得到一个 freg.default.so 文件</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n156">
+<span id="id11"></span><h4><span class="section-number">1.1.3.3. </span>硬件抽象层模块的加载过程<a class="headerlink" href="#header-n156" title="Permalink to this headline">¶</a></h4>
+<p>负责加载硬件抽象层模块的函数 hw<em>get</em>module :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// hardware\libhardware\include\hardware\hardware.h</span>
+<span class="cm">/**</span>
+<span class="cm"> * Get the module info associated with a module by id.</span>
+<span class="cm"> * @return: 0 == success, &lt;0 == error and *pHmi == NULL</span>
+<span class="cm"> */</span>
+<span class="c1">// id: 输入参数， 表示要加载的硬件抽象层模块ID；</span>
+<span class="c1">// module : 输出参数， 如果加载成功， 那么它指向一个自定义的硬件抽象层模块结构体</span>
+<span class="c1">// 加载硬件抽象层模块</span>
+<span class="kt">int</span> <span class="nf">hw_get_module</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span> <span class="o">**</span><span class="n">module</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>分析hw<em>get</em>module函数的实现 :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// hardware\libhardware\hardware.c</span>
+
+<span class="cm">/** Base path of the hal modules */</span>
+<span class="c1">// 定义要加载的硬件抽象层模块文件所在的目录</span>
+<span class="c1">// 编译好的模块文件位于 out/target/product/generic/system/lib/hw 目录中，</span>
+<span class="c1">//而这个目录经过打包后， 就对应于设备上的 /system/lib/hw 目录</span>
+<span class="cp">#define HAL_LIBRARY_PATH1 &quot;/system/lib/hw&quot;</span>
+<span class="c1">// 定义的目录为 /vendor/lib/hw ，用来保存设备厂商所提供的硬件抽象层模块接口文件</span>
+<span class="cp">#define HAL_LIBRARY_PATH2 &quot;/vendor/lib/hw&quot;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * There are a set of variant filename for modules. The form of the filename</span>
+<span class="cm"> * is &quot;&lt;MODULE_ID&gt;.variant.so&quot; so for the led module the Dream variants</span>
+<span class="cm"> * of base &quot;ro.product.board&quot;, &quot;ro.board.platform&quot; and &quot;ro.arch&quot; would be:</span>
+<span class="cm"> *</span>
+<span class="cm"> * led.trout.so</span>
+<span class="cm"> * led.msm7k.so</span>
+<span class="cm"> * led.ARMV6.so</span>
+<span class="cm"> * led.default.so</span>
+<span class="cm"> */</span>
+
+<span class="c1">// 组装要加载的硬件抽象层模块的文件名称</span>
+<span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">variant_keys</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;ro.hardware&quot;</span><span class="p">,</span>  <span class="cm">/* This goes first so that it can pick up a different</span>
+<span class="cm">                       file on the emulator. */</span>
+    <span class="s">&quot;ro.product.board&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ro.board.platform&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ro.arch&quot;</span>
+<span class="p">};</span>
+
+<span class="c1">// 数组 variant_keys的大小</span>
+<span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">HAL_VARIANT_KEYS_COUNT</span> <span class="o">=</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">variant_keys</span><span class="p">)</span><span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">variant_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+
+<span class="kt">int</span> <span class="nf">hw_get_module</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span> <span class="o">**</span><span class="n">module</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span> <span class="o">*</span><span class="n">hmi</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">prop</span><span class="p">[</span><span class="n">PATH_MAX</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">path</span><span class="p">[</span><span class="n">PATH_MAX</span><span class="p">];</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * Here we rely on the fact that calling dlopen multiple times on</span>
+<span class="cm">     * the same .so will simply increment a refcount (and not load</span>
+<span class="cm">     * a new copy of the library).</span>
+<span class="cm">     * We also assume that dlopen() is thread-safe.</span>
+<span class="cm">     */</span>
+
+    <span class="cm">/* Loop through the configuration variants looking for a module */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">HAL_VARIANT_KEYS_COUNT</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 根据数组 variant_keys 在 HAL_LIBRARY_PATH1 和 HAL_LIBRARY_PATH2 目录中检查对应的硬件抽象层模块文件是否存在，</span>
+        <span class="c1">//如果存在， 则结束for循环；</span>
+
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">HAL_VARIANT_KEYS_COUNT</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// 获得的系统属性“ro.hardware”的值</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">property_get</span><span class="p">(</span><span class="n">variant_keys</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">prop</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">snprintf</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s">&quot;%s/%s.%s.so&quot;</span><span class="p">,</span> <span class="n">HAL_LIBRARY_PATH1</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">prop</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">access</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">R_OK</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">snprintf</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s">&quot;%s/%s.%s.so&quot;</span><span class="p">,</span> <span class="n">HAL_LIBRARY_PATH2</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">prop</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">access</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">R_OK</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">snprintf</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s">&quot;%s/%s.default.so&quot;</span><span class="p">,</span> <span class="n">HAL_LIBRARY_PATH1</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">access</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">R_OK</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">status</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOENT</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">HAL_VARIANT_KEYS_COUNT</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="cm">/* load the module, if this fails, we&#39;re doomed, and we should not try</span>
+<span class="cm">         * to load a different variant. */</span>
+        <span class="c1">// 加载硬件抽象层模块的操作</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">module</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">status</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>load 函数来执行硬件抽象层模块的加载操作 :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// hardware\libhardware\hardware.c</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Load the file defined by the variant and if successful</span>
+<span class="cm"> * return the dlopen handle and the hmi.</span>
+<span class="cm"> * @return 0 = success, !0 = failure.</span>
+<span class="cm"> */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">load</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">id</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">path</span><span class="p">,</span>
+                 <span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span> <span class="o">**</span><span class="n">pHmi</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">handle</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">hw_module_t</span> <span class="o">*</span><span class="n">hmi</span><span class="p">;</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * load the symbols resolving undefined symbols before</span>
+<span class="cm">     * dlopen returns. Since RTLD_GLOBAL is not or&#39;d in with</span>
+<span class="cm">     * RTLD_NOW the external symbols will not be global</span>
+<span class="cm">     */</span>
+    <span class="cm">/* 将它加载到内存中 */</span>
+    <span class="n">handle</span> <span class="o">=</span> <span class="n">dlopen</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">RTLD_NOW</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">handle</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">err_str</span> <span class="o">=</span> <span class="n">dlerror</span><span class="p">();</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;load: module=%s</span><span class="se">\n</span><span class="s">%s&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">err_str</span><span class="o">?</span><span class="nl">err_str</span><span class="p">:</span><span class="s">&quot;unknown&quot;</span><span class="p">);</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+        <span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Get the address of the struct hal_module_info. */</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">sym</span> <span class="o">=</span> <span class="n">HAL_MODULE_INFO_SYM_AS_STR</span><span class="p">;</span>
+
+    <span class="c1">// 获得里面名称为 HAL_MODULE_INFO_SYM_AS_STR 的符号</span>
+    <span class="c1">// 符号指向的是一个自定义的硬件抽象层模块结构体，</span>
+    <span class="c1">// 它包含了对应的硬件抽象层模块的所有信息</span>
+    <span class="c1">// 将模块中的 HMI 符号转换为一个 hw_module_t 结构体指针</span>
+    <span class="n">hmi</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">hw_module_t</span> <span class="o">*</span><span class="p">)</span><span class="n">dlsym</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">sym</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">hmi</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;load: couldn&#39;t find symbol %s&quot;</span><span class="p">,</span> <span class="n">sym</span><span class="p">);</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+        <span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Check that the id matches */</span>
+    <span class="cm">/* 验证加载得到的硬件抽象层模块ID 是否 与所要求加载的硬件抽象层模块ID一致 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">hmi</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;load: id=%s != hmi-&gt;id=%s&quot;</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">hmi</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">);</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+        <span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//将成功加载后得到的模块句柄值 handle 保存在 hw_module_t 结构体指针 hmi 的成员变量 dso 中</span>
+    <span class="n">hmi</span><span class="o">-&gt;</span><span class="n">dso</span> <span class="o">=</span> <span class="n">handle</span><span class="p">;</span>
+
+    <span class="cm">/* success */</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nl">done</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">hmi</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">handle</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">dlclose</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+            <span class="n">handle</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">LOGV</span><span class="p">(</span><span class="s">&quot;loaded HAL id=%s path=%s hmi=%p handle=%p&quot;</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">pHmi</span><span class="p">,</span> <span class="n">handle</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="o">*</span><span class="n">pHmi</span> <span class="o">=</span> <span class="n">hmi</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">status</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n167">
+<span id="id12"></span><h4><span class="section-number">1.1.3.4. </span>处理硬件设备访问权限问题<a class="headerlink" href="#header-n167" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Android/hardware/libhardware/Modules/freg/freg.cpp</span>
+
+<span class="c1">// 打开操作</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">freg_device_open</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span><span class="o">*</span> <span class="n">module</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">id</span><span class="p">,</span>
+                            <span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">**</span> <span class="n">device</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 判断 id 与虚拟硬件设备freg的ID值是否 匹配</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">strcmp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">FREG_HARDWARE_DEVICE_ID</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">dev</span><span class="p">;</span>
+
+        <span class="n">dev</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="p">));</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Failed to alloc space for freg_device_t.&quot;</span><span class="p">);</span>
+                     <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+             <span class="p">}</span>
+
+        <span class="n">memset</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">freg_device_t</span><span class="p">));</span>
+
+        <span class="c1">// 硬件设备标签（dev-＞common.tag） 必须 == HARDWARE_DEVICE_TAG</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">HARDWARE_DEVICE_TAG</span><span class="p">;</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">version</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">module</span> <span class="o">=</span> <span class="p">(</span><span class="n">hw_module_t</span><span class="o">*</span><span class="p">)</span><span class="n">module</span><span class="p">;</span>
+        <span class="c1">// 关闭函数设置为 freg_device_close</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">.</span><span class="n">close</span> <span class="o">=</span> <span class="n">freg_device_close</span><span class="p">;</span>
+        <span class="c1">// 写函数</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">set_val</span> <span class="o">=</span> <span class="n">freg_set_val</span><span class="p">;</span>
+        <span class="c1">// 读函数</span>
+             <span class="n">dev</span><span class="o">-&gt;</span><span class="n">get_val</span> <span class="o">=</span> <span class="n">freg_get_val</span><span class="p">;</span>
+
+        <span class="c1">// 打开虚拟硬件设备文件/dev/freg ， 且将得到的文件描述符保存在结构体 freg_device_t 的成员变量 fd 中</span>
+        <span class="c1">// 不修改设备文件/dev/freg的访问权限 , 打不开</span>
+        <span class="k">if</span><span class="p">((</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">DEVICE_NAME</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Failed to open device file /dev/freg -- %s.&quot;</span><span class="p">,</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+                     <span class="n">free</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+
+                     <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="o">*</span><span class="n">device</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">);</span>
+
+        <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Open device file /dev/freg successfully.&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Android</span></code>提供了另外的一个<code class="docutils literal notranslate"><span class="pre">uevent</span></code>机制，
+可以在系统启动时修改设备文件的访问权限</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span># system\core\rootdir\ueventd.rc
+# ...
+/dev/binder               0666   root       root
+/dev/freg                 0666   root       root
+
+# logger should be world writable (for logging) but not readable
+/dev/log/*                0662   root       log
+
+# the msm hw3d client device node is world writable/readable.
+/dev/msm_hw3dc            0666   root       root
+
+# gpu driver for adreno200 is globally accessible
+/dev/kgsl                 0666   root       root
+
+#...
+</pre></div>
+</div>
+<div class="section" id="ramdisk-img">
+<span id="header-n174"></span><h5><span class="section-number">1.1.3.4.1. </span>解压ramdisk.img镜像文件<a class="headerlink" href="#ramdisk-img" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 将ramdisk.img改名为ramdisk.img.gz</span>
+mv ./out/target/product/generic/reamdisk.img ./reamdisk.img.gz
+
+<span class="c1"># 解压</span>
+gunzip ./ramdisk.img.gz
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n181">
+<span id="id13"></span><h5><span class="section-number">1.1.3.4.2. </span>还原ramdisk.img镜像文件<a class="headerlink" href="#header-n181" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建目录</span>
+mkdir ramdisk
+
+<span class="c1"># 进入目录</span>
+<span class="nb">cd</span> ./ramdisk/
+
+<span class="c1"># 解除归档</span>
+cpio -i -F ../ramdisk.img
+</pre></div>
+</div>
+</div>
+<div class="section" id="ueventd-rc">
+<span id="header-n184"></span><h5><span class="section-number">1.1.3.4.3. </span>修改ueventd.rc文件<a class="headerlink" href="#ueventd-rc" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入目录</span>
+<span class="nb">cd</span> /ramdisk
+
+<span class="c1"># 修改 文件</span>
+vim ueventd.rc
+</pre></div>
+</div>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span># system\core\rootdir\ueventd.rc
+# ...
+/dev/binder               0666   root       root
+# 赋予了系统中的所有用户访问设备文件/dev/freg的权限
+/dev/freg                 0666   root       root
+
+# logger should be world writable (for logging) but not readable
+/dev/log/*                0662   root       log
+
+# the msm hw3d client device node is world writable/readable.
+/dev/msm_hw3dc            0666   root       root
+
+# gpu driver for adreno200 is globally accessible
+/dev/kgsl                 0666   root       root
+
+#...
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n189">
+<span id="id14"></span><h5><span class="section-number">1.1.3.4.4. </span>重新打包ramdisk.img镜像文件<a class="headerlink" href="#header-n189" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 删除</span>
+rm -f ../ramdisk.img
+
+<span class="c1"># 把 ramdisk 目录归档成 cpio 文件</span>
+find . <span class="p">|</span> cpio -o -H newc &gt; ../ramdisk.img.unzip
+
+<span class="c1"># 切换到上目录</span>
+<span class="nb">cd</span> ..
+
+<span class="c1"># 压缩成gzip文件</span>
+gzip -c ./ramdisk.img.unzip &gt; .ramdisk.img.gz
+
+<span class="c1"># 删除</span>
+rm -f ./ramdisk.img.unzip
+rm -R ./ramdisk
+
+<span class="c1"># 转移 并改名</span>
+mv ./ramdisk.img.gz ./out/target/product/generic/ramdisk.img
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+<div class="section" id="header-n193">
+<span id="id15"></span><h3><span class="section-number">1.1.4. </span>开发Android硬件访问服务<a class="headerlink" href="#header-n193" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="header-n195">
+<span id="id16"></span><h4><span class="section-number">1.1.4.1. </span>定义硬件访问服务接口<a class="headerlink" href="#header-n195" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// frameworks\base\core\java\android\os\IFregService.aidl</span>
+
+<span class="kn">package</span> <span class="nn">android.os</span><span class="p">;</span>
+
+<span class="kd">interface</span> <span class="nc">IFregService</span>
+<span class="p">{</span>
+    <span class="c1">// 往虚拟硬件设备freg的寄存器val中写入一个整数</span>
+     <span class="kt">void</span> <span class="nf">setVal</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">);</span>
+    <span class="c1">// 从虚拟硬件设备freg的寄存器val中读出一个整数</span>
+     <span class="kt">int</span> <span class="nf">getVal</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># frameworks/base/Android.mk</span>
+
+<span class="c">## READ ME: ########################################################</span>
+<span class="c">##</span>
+<span class="c">## When updating this list of aidl files, consider if that aidl is</span>
+<span class="c">## part of the SDK API.  If it is, also add it to the list below that</span>
+<span class="c">## is preprocessed and distributed with the SDK.  This list should</span>
+<span class="c">## not contain any aidl files for parcelables, but the one below should</span>
+<span class="c">## if you intend for 3rd parties to be able to send those objects</span>
+<span class="c">## across process boundaries.</span>
+<span class="c">##</span>
+<span class="c">## READ ME: ########################################################</span>
+<span class="nv">LOCAL_SRC_FILES</span> <span class="o">+=</span> <span class="se">\</span>
+     core/java/android/accessibilityservice/IAccessibilityServiceConnection.aidl <span class="se">\</span>
+<span class="c">     #...</span>
+     core/java/android/net/IThrottleManager.aidl <span class="se">\</span>
+     core/java/android/nfc/IP2pTarget.aidl <span class="se">\</span>
+     core/java/android/os/IVibratorService.aidl <span class="se">\</span>
+<span class="c">     # 将需要的添加到编译脚本文件中</span>
+     core/java/android/os/IFregService.aidl <span class="se">\</span>
+     core/java/android/service/urlrenderer/IUrlRendererService.aidl <span class="se">\</span>
+<span class="c">     #...</span>
+     voip/java/android/net/sip/ISipService.aidl
+<span class="c">#</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 对硬件访问服务接口IFregService进行编译</span>
+mmm ./frameworks/base/
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n203">
+<span id="id17"></span><h4><span class="section-number">1.1.4.2. </span>实现硬件访问服务<a class="headerlink" href="#header-n203" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// frameworks\base\services\java\com\android\server\FregService.java</span>
+
+<span class="kn">package</span> <span class="nn">com.android.server</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.os.IFregService</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.util.Slog</span><span class="p">;</span>
+
+<span class="c1">// 硬件访问服务FregService继承了IFregService.Stub类</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FregService</span> <span class="kd">extends</span> <span class="n">IFregService</span><span class="p">.</span><span class="na">Stub</span>
+<span class="p">{</span>
+     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s">&quot;FregService&quot;</span><span class="p">;</span>
+
+     <span class="kd">private</span> <span class="kt">int</span> <span class="n">mPtr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+     <span class="n">FregService</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 调用 JNI 方法 init_native 来打开虚拟硬件设备 freg ，</span>
+        <span class="c1">// 并且获得它的一个句柄值， 保存在成员变量 mPtr 中</span>
+             <span class="n">mPtr</span> <span class="o">=</span> <span class="n">init_native</span><span class="p">();</span>
+
+             <span class="k">if</span><span class="p">(</span><span class="n">mPtr</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">Slog</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;Failed to initialize freg service.&quot;</span><span class="p">);</span>
+             <span class="p">}</span>
+     <span class="p">}</span>
+
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setVal</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="k">if</span><span class="p">(</span><span class="n">mPtr</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">Slog</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;Freg service is not initialized.&quot;</span><span class="p">);</span>
+                     <span class="k">return</span><span class="p">;</span>
+             <span class="p">}</span>
+             <span class="c1">// 调用 JNI 方法 setVal_native 来写虚拟硬件设备 freg 的寄存器 val</span>
+             <span class="n">setVal_native</span><span class="p">(</span><span class="n">mPtr</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getVal</span><span class="p">()</span>
+    <span class="p">{</span>
+             <span class="k">if</span><span class="p">(</span><span class="n">mPtr</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">Slog</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;Freg service is not initialized.&quot;</span><span class="p">);</span>
+                     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+             <span class="p">}</span>
+
+        <span class="c1">//调用 JNI 方法 getVal_native 来读虚拟硬件设备 freg 的寄存器 val</span>
+             <span class="k">return</span> <span class="n">getVal_native</span><span class="p">(</span><span class="n">mPtr</span><span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">native</span> <span class="kt">int</span> <span class="nf">init_native</span><span class="p">();</span>
+     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">native</span> <span class="kt">void</span> <span class="nf">setVal_native</span><span class="p">(</span><span class="kt">int</span> <span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">);</span>
+     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">native</span> <span class="kt">int</span> <span class="nf">getVal_native</span><span class="p">(</span><span class="kt">int</span> <span class="n">ptr</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重新编译 Android 系统的 services 模块</span>
+mmm ./frameworks/base/services/java/
+</pre></div>
+</div>
+</div>
+<div class="section" id="jni">
+<span id="header-n209"></span><h4><span class="section-number">1.1.4.3. </span>实现硬件访问服务的JNI方法<a class="headerlink" href="#jni" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// frameworks\base\services\jni\com_android_server_FregService.cpp</span>
+
+<span class="cp">#define LOG_TAG &quot;FregServiceJNI&quot;</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;jni.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;JNIHelp.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;android_runtime/AndroidRuntime.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;utils/misc.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;utils/Log.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;hardware/hardware.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;hardware/freg.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">android</span>
+<span class="p">{</span>
+    <span class="c1">//设置虚拟硬件设备 freg 的寄存器的值</span>
+    <span class="k">static</span> <span class="kt">void</span> <span class="n">freg_setVal</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">,</span> <span class="n">jobject</span> <span class="n">clazz</span><span class="p">,</span> <span class="n">jint</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">jint</span> <span class="n">value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+
+        <span class="c1">//将参数 ptr 转换为 freg_device_t 结构体变量</span>
+        <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">device</span> <span class="o">=</span> <span class="p">(</span><span class="n">freg_device_t</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">device</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Device freg is not open.&quot;</span><span class="p">);</span>
+                     <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+             <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Set value %d to device freg.&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+
+             <span class="n">device</span><span class="o">-&gt;</span><span class="n">set_val</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//读取虚拟硬件设备freg的寄存器的值</span>
+    <span class="k">static</span> <span class="n">jint</span> <span class="n">freg_getVal</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">,</span> <span class="n">jobject</span> <span class="n">clazz</span><span class="p">,</span> <span class="n">jint</span> <span class="n">ptr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="c1">//将传输ptr转换为 freg_device_t 结构体变量</span>
+        <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">device</span> <span class="o">=</span> <span class="p">(</span><span class="n">freg_device_t</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">device</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Device freg is not open.&quot;</span><span class="p">);</span>
+                     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+             <span class="p">}</span>
+
+             <span class="n">device</span><span class="o">-&gt;</span><span class="n">get_val</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">);</span>
+
+             <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Get value %d from device freg.&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+
+             <span class="k">return</span> <span class="n">val</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//打开虚拟硬件设备freg</span>
+    <span class="k">static</span> <span class="kr">inline</span> <span class="kt">int</span> <span class="n">freg_device_open</span><span class="p">(</span><span class="k">const</span> <span class="n">hw_module_t</span><span class="o">*</span> <span class="k">module</span><span class="p">,</span>
+                                       <span class="k">struct</span> <span class="n">freg_device_t</span><span class="o">**</span> <span class="n">device</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">module</span><span class="o">-&gt;</span><span class="n">methods</span><span class="o">-&gt;</span><span class="n">open</span><span class="p">(</span><span class="k">module</span><span class="p">,</span>
+                                     <span class="n">FREG_HARDWARE_DEVICE_ID</span><span class="p">,</span>
+                                     <span class="p">(</span><span class="k">struct</span> <span class="n">hw_device_t</span><span class="o">**</span><span class="p">)</span><span class="n">device</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//初始化虚拟硬件设备freg</span>
+    <span class="k">static</span> <span class="n">jint</span> <span class="n">freg_init</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">,</span> <span class="n">jclass</span> <span class="n">clazz</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">freg_module_t</span><span class="o">*</span> <span class="k">module</span><span class="p">;</span>
+             <span class="n">freg_device_t</span><span class="o">*</span> <span class="n">device</span><span class="p">;</span>
+
+             <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Initializing HAL stub freg......&quot;</span><span class="p">);</span>
+
+        <span class="c1">//加载硬件抽象层模块freg</span>
+        <span class="c1">// 根据 FREG_HARDWARE_MODULE_ID 来加载 Android 硬件抽象层模块 freg</span>
+             <span class="k">if</span><span class="p">(</span><span class="n">hw_get_module</span><span class="p">(</span><span class="n">FREG_HARDWARE_MODULE_ID</span><span class="p">,</span>
+                         <span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">hw_module_t</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="k">module</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+                     <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Device freg found.&quot;</span><span class="p">);</span>
+            <span class="c1">//打开虚拟硬件设freg</span>
+                     <span class="k">if</span><span class="p">(</span><span class="n">freg_device_open</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="k">module</span><span class="o">-&gt;</span><span class="n">common</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">device</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                     <span class="p">{</span>
+                             <span class="n">LOGI</span><span class="p">(</span><span class="s">&quot;Device freg is open.&quot;</span><span class="p">);</span>
+                <span class="c1">//将freg_device_t 接口转换为整型句柄值值返回</span>
+                             <span class="k">return</span> <span class="p">(</span><span class="n">jint</span><span class="p">)</span><span class="n">device</span><span class="p">;</span>
+                     <span class="p">}</span>
+
+                     <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Failed to open device freg.&quot;</span><span class="p">);</span>
+                     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+             <span class="p">}</span>
+
+             <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;Failed to get HAL stub freg.&quot;</span><span class="p">);</span>
+
+             <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//java本地接口方法表</span>
+    <span class="c1">// 把JNI方法表method_table注册到Java虚拟机</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="n">JNINativeMethod</span> <span class="n">method_table</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="p">{</span><span class="s">&quot;init_native&quot;</span><span class="p">,</span> <span class="s">&quot;()I&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">freg_init</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&quot;setVal_native&quot;</span><span class="p">,</span> <span class="s">&quot;(II)V&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">freg_setVal</span><span class="p">},</span>
+             <span class="p">{</span><span class="s">&quot;getVal_native&quot;</span><span class="p">,</span> <span class="s">&quot;(I)I&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">freg_getVal</span><span class="p">},</span>
+     <span class="p">};</span>
+
+    <span class="c1">//注册java本地接口方法</span>
+     <span class="kt">int</span> <span class="nf">register_android_server_FregService</span><span class="p">(</span><span class="n">JNIEnv</span> <span class="o">*</span><span class="n">env</span><span class="p">)</span>
+    <span class="p">{</span>
+             <span class="k">return</span> <span class="n">jniRegisterNativeMethods</span><span class="p">(</span><span class="n">env</span><span class="p">,</span>
+                                        <span class="s">&quot;com/android/server/FregService&quot;</span><span class="p">,</span>
+                                        <span class="n">method_table</span><span class="p">,</span>
+                                        <span class="n">NELEM</span><span class="p">(</span><span class="n">method_table</span><span class="p">));</span>
+     <span class="p">}</span>
+
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// frameworks/base/services/jni/onload.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;JNIHelp.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;jni.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;utils/Log.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;utils/misc.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">android</span>
+<span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="kt">int</span> <span class="n">register_android_server_location_GpsLocationProvider</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">);</span>
+    <span class="c1">// 声明</span>
+<span class="kt">int</span> <span class="nf">register_android_server_FregService</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">android</span><span class="p">;</span>
+
+<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="n">jint</span> <span class="n">JNI_OnLoad</span><span class="p">(</span><span class="n">JavaVM</span><span class="o">*</span> <span class="n">vm</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">reserved</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">jint</span> <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">GetEnv</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">env</span><span class="p">,</span> <span class="n">JNI_VERSION_1_4</span><span class="p">)</span> <span class="o">!=</span> <span class="n">JNI_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LOGE</span><span class="p">(</span><span class="s">&quot;GetEnv failed!&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">LOG_ASSERT</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s">&quot;Could not retrieve the env!&quot;</span><span class="p">);</span>
+
+     <span class="c1">//...</span>
+    <span class="n">register_android_server_location_GpsLocationProvider</span><span class="p">(</span><span class="n">env</span><span class="p">);</span>
+    <span class="c1">//调用</span>
+    <span class="n">register_android_server_FregService</span><span class="p">(</span><span class="n">env</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">JNI_VERSION_1_4</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># frameworks/base/services/jni/Android.mk</span>
+
+<span class="nv">LOCAL_PATH</span><span class="o">:=</span> <span class="k">$(</span>call my-dir<span class="k">)</span>
+<span class="cp">include $(CLEAR_VARS)</span>
+
+<span class="c"># 修改变量LOCAL_SRC_FILES的值</span>
+<span class="nv">LOCAL_SRC_FILES</span><span class="o">:=</span> <span class="se">\</span>
+<span class="c">     #...</span>
+    com_android_server_location_GpsLocationProvider.cpp <span class="se">\</span>
+    com_android_server_FregService.cpp <span class="se">\</span>
+    onload.cpp
+
+<span class="nv">LOCAL_C_INCLUDES</span> <span class="o">+=</span> <span class="se">\</span>
+     <span class="k">$(</span>JNI_H_INCLUDE<span class="k">)</span>
+
+<span class="nv">LOCAL_SHARED_LIBRARIES</span> <span class="o">:=</span> <span class="se">\</span>
+    libandroid_runtime <span class="se">\</span>
+     libcutils <span class="se">\</span>
+     libhardware <span class="se">\</span>
+     libhardware_legacy <span class="se">\</span>
+     libnativehelper <span class="se">\</span>
+    libsystem_server <span class="se">\</span>
+     libutils <span class="se">\</span>
+     libui <span class="se">\</span>
+    libsurfaceflinger_client
+
+<span class="cp">ifeq ($(TARGET_SIMULATOR),true)</span>
+<span class="cp">ifeq ($(TARGET_OS),linux)</span>
+<span class="cp">ifeq ($(TARGET_ARCH),x86)</span>
+<span class="nv">LOCAL_LDLIBS</span> <span class="o">+=</span> -lpthread -ldl -lrt
+<span class="cp">endif</span>
+<span class="cp">endif</span>
+<span class="cp">endif</span>
+
+<span class="cp">ifeq ($(WITH_MALLOC_LEAK_CHECK),true)</span>
+     <span class="nv">LOCAL_CFLAGS</span> <span class="o">+=</span> -DMALLOC_LEAK_CHECK
+<span class="cp">endif</span>
+
+<span class="nv">LOCAL_MODULE</span><span class="o">:=</span> libandroid_servers
+
+<span class="cp">include $(BUILD_SHARED_LIBRARY)</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重新编译libandroid_servers模块 , 得到的libandroid_servers.so文件</span>
+mmm ./frameworks/base/services/jni/
+</pre></div>
+</div>
+</div>
+<div class="section" id="header-n218">
+<span id="id18"></span><h4><span class="section-number">1.1.4.4. </span>启动硬件访问服务<a class="headerlink" href="#header-n218" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">//...</span>
+<span class="kd">class</span> <span class="nc">ServerThread</span> <span class="kd">extends</span> <span class="n">Thread</span>
+<span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="c1">// 修改 ServerThread 类的成员函数run的实现</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">factoryTest</span> <span class="o">!=</span> <span class="n">SystemServer</span><span class="p">.</span><span class="na">FACTORY_TEST_LOW_LEVEL</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//...</span>
+                     <span class="k">try</span> <span class="p">{</span>
+                <span class="n">Slog</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;DiskStats Service&quot;</span><span class="p">);</span>
+                <span class="n">ServiceManager</span><span class="p">.</span><span class="na">addService</span><span class="p">(</span><span class="s">&quot;diskstats&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">DiskStatsService</span><span class="p">(</span><span class="n">context</span><span class="p">));</span>
+                     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">Slog</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;Failure starting DiskStats Service&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+                     <span class="p">}</span>
+
+                     <span class="k">try</span> <span class="p">{</span>
+                             <span class="n">Slog</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;Freg Service&quot;</span><span class="p">);</span>
+                             <span class="n">ServiceManager</span><span class="p">.</span><span class="na">addService</span><span class="p">(</span><span class="s">&quot;freg&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">FregService</span><span class="p">());</span>
+                     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                             <span class="n">Slog</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;Failure starting Freg Service&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+                     <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重新编译services模块</span>
+mmm ./frameworks/base/services/java/
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重新打包Android系统镜像文件system.img</span>
+make snod
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="header-n226">
+<span id="id19"></span><h3><span class="section-number">1.1.5. </span>开发Android应用程序来使用硬件访问服务<a class="headerlink" href="#header-n226" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>~/Android/packages/experimental/Freg
+     <span class="c1"># 配置文件</span>
+     AndroidManifest.xml
+     Android.mk
+     <span class="c1"># 源代码目录</span>
+     src
+             shy/luo/freg
+                     Freg.java
+     <span class="c1"># 资源目录res</span>
+     res
+             layout
+                     main.xml
+                     values
+                             string.xml
+                     drawable
+                             icon.png
+</pre></div>
+</div>
+<p>Freg.java :</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Android\packages\experimental\Freg\src\shy\luo\freg</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Freg</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="kd">implements</span> <span class="n">OnClickListener</span>
+<span class="p">{</span>
+     <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">LOG_TAG</span> <span class="o">=</span> <span class="s">&quot;shy.luo.freg.FregActivity&quot;</span><span class="p">;</span>
+
+     <span class="kd">private</span> <span class="n">IFregService</span> <span class="n">fregService</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+     <span class="kd">private</span> <span class="n">EditText</span> <span class="n">valueText</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+     <span class="kd">private</span> <span class="n">Button</span> <span class="n">readButton</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+     <span class="kd">private</span> <span class="n">Button</span> <span class="n">writeButton</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+     <span class="kd">private</span> <span class="n">Button</span> <span class="n">clearButton</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+    <span class="cm">/** Called when the activity is first created. */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">main</span><span class="p">);</span>
+
+             <span class="n">fregService</span> <span class="o">=</span> <span class="n">IFregService</span><span class="p">.</span><span class="na">Stub</span><span class="p">.</span><span class="na">asInterface</span><span class="p">(</span><span class="n">ServiceManager</span><span class="p">.</span><span class="na">getService</span><span class="p">(</span><span class="s">&quot;freg&quot;</span><span class="p">));</span>
+
+        <span class="n">valueText</span> <span class="o">=</span> <span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">edit_value</span><span class="p">);</span>
+        <span class="n">readButton</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_read</span><span class="p">);</span>
+        <span class="n">writeButton</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_write</span><span class="p">);</span>
+        <span class="n">clearButton</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_clear</span><span class="p">);</span>
+
+             <span class="n">readButton</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+             <span class="n">writeButton</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+             <span class="n">clearButton</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+
+        <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span> <span class="s">&quot;Freg Activity Created&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span>
+    <span class="p">{</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">readButton</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                             <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">fregService</span><span class="p">.</span><span class="na">getVal</span><span class="p">();</span>
+                             <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
+                             <span class="n">valueText</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">RemoteException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span> <span class="s">&quot;Remote Exception while reading value from freg service.&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">writeButton</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                             <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">valueText</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
+                             <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+                             <span class="n">fregService</span><span class="p">.</span><span class="na">setVal</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">RemoteException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span> <span class="s">&quot;Remote Exception while writing value to freg service.&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">clearButton</span><span class="p">))</span>
+        <span class="p">{</span>
+             <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+             <span class="n">valueText</span><span class="p">.</span><span class="na">setText</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+     <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../test.html" class="btn btn-neutral float-left" title="2. www 我好开学 .com" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, cpucode
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
