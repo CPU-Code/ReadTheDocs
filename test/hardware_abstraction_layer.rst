@@ -55,7 +55,7 @@ Android系统的体系结构 :
    			Kconfig	# 编译选项配置文件
    			Makefile	# 编译脚本文件
 
-freg.h :
+freg.h 
 
 .. code:: c
 
@@ -1974,6 +1974,7 @@ load 函数来执行硬件抽象层模块的加载操作 :
    				string.xml
    			drawable
    				icon.png
+
 
 Freg.java :
 
